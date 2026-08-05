@@ -109,12 +109,11 @@ pip install numpy scipy optuna langchain-openai
 Edit `config.py` to set your LLM API credentials:
 
 ```python
-# Example: Moonshot Kimi-K2.5
-LLM_MODEL = "moonshotai/Kimi-K2.5"
+LLM_MODEL = "xxxxxx"
 OPENAI_API_KEY = "your-api-key-here"
-BASE_URL = "https://api-inference.modelscope.cn/v1"
+BASE_URL = "xxxxxxx"
 LLM_TEMPERATURE = 0.0
-LLM_MAX_RETRIES = 30
+LLM_MAX_RETRIES = 3
 ```
 
 ### 2. Launch the Evolution Loop
