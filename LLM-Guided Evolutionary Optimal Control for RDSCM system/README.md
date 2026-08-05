@@ -4,7 +4,7 @@
   <img src="https://img.shields.io/badge/Optuna-integrated-orange?style=flat-square" alt="Optuna">
 </p>
 
-<h1 align="center">🧠 LLM-Guided Evolutionary Framework for PDE-Constrained Bang-Bang Control</h1>
+<h1 align="center">🧠 LLM-Guided Evolutionary Framework for Spatiotemporal Control against Malware Propagation in IoUT</h1>
 
 <p align="center">
   <b>An automated closed-loop framework that evolves control-law structures via LLM reasoning and optimizes parameters via CMA-ES.</b><br>
