@@ -75,12 +75,8 @@ def detect_structural_anomalies(code_str: str, metrics: dict, param_bounds: dict
             if 'column_stack' not in return_section and 'hstack' not in return_section:
                 anomalies.append("[Format Warning] Return value may not be explicitly constructed. Ensure shape is (M+1, 6).")
 
-    # 2. Check for T = 3.0
-    if 'T' in code_str and '= 3.0' not in code_str:
-        if 'T_final' in code_str or 'T =' in code_str:
-            anomalies.append("[Format Warning] Do not define custom T_final. Use T = 3.0 directly.")
 
-    # 3. Vectorization violations
+    # 2. Vectorization violations
     if re.search(r'float\(\s*[a-zA-Z_][a-zA-Z0-9_]*\s*\)', code_str):
         anomalies.append("[Vectorization Warning] Found float(variable) usage. If variable is an array, this will crash. Replace with .astype(float).")
     if re.search(r'int\(\s*[a-zA-Z_][a-zA-Z0-9_]*\s*\)', code_str):
@@ -88,11 +84,11 @@ def detect_structural_anomalies(code_str: str, metrics: dict, param_bounds: dict
     if re.search(r'bool\(\s*[a-zA-Z_][a-zA-Z0-9_]*\s*\)', code_str):
         anomalies.append("[Vectorization Warning] Found bool(variable) usage. If variable is an array, this will crash. Remove it.")
 
-    # 4. Spatial loops
+    # 3. Spatial loops
     if re.search(r'for\s+\w+\s+in\s+range\s*\(\s*len\s*\(\s*x\s*\)\s*\)', code_str):
         anomalies.append("[Vectorization Warning] Detected for loop over spatial points. This violates vectorization requirement.")
 
-    # 5. np.where usage
+    # 4. np.where usage
     if 'np.where' not in code_str:
         anomalies.append("[Vectorization Suggestion] np.where not used for generating control values. Ensure final control values are strictly 0/1 or 0/0.5.")
 
